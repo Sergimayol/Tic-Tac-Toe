@@ -48,7 +48,7 @@ public class TicTacToe extends JFrame implements ActionListener {
 
     //Constructor
     public TicTacToe() {
-        colorCasillas = Color.WHITE;
+        colorCasillas = Colores.ALICE_BLUE;
         casillas = new JButton[9];
         panelCasillas = new JPanel();
         panelCasillas.setLayout(new GridLayout(3, 3));
@@ -76,8 +76,8 @@ public class TicTacToe extends JFrame implements ActionListener {
 
     private void configTextoInfo() {
         //Configuracion texto
-        texto.setBackground(Color.PINK);
-        texto.setForeground(Color.BLUE);
+        texto.setBackground(Colores.ALICE_BLUE);
+        texto.setForeground(Colores.VIRIDIAN);
         texto.setFont(new Font("Ink Free", Font.BOLD, 75));
         texto.setHorizontalAlignment(JLabel.CENTER);
         texto.setText("Tic Tac Toe");
@@ -126,7 +126,7 @@ public class TicTacToe extends JFrame implements ActionListener {
             Thread.sleep(2000);
             texto.setText("Preparando...");
             inicio = random.nextInt(100);
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             if (inicio <= 50) {
                 Jugador1 = false;
                 texto.setText("Turno de: O");
@@ -156,9 +156,9 @@ public class TicTacToe extends JFrame implements ActionListener {
     }
 
     private void jugadorGanaPartida(String s, int g1, int g2, int g3) {
-        casillas[g1].setBackground(Color.RED);
-        casillas[g2].setBackground(Color.RED);
-        casillas[g3].setBackground(Color.RED);
+        casillas[g1].setBackground(Colores.DARK_RED);
+        casillas[g2].setBackground(Colores.DARK_RED);
+        casillas[g3].setBackground(Colores.DARK_RED);
         for (JButton casilla : casillas) {
             casilla.setEnabled(false);
         }
@@ -214,19 +214,19 @@ public class TicTacToe extends JFrame implements ActionListener {
             if (ae.getSource() == casilla) {
                 if (Jugador1) {
                     if ("".equals(casilla.getText())) {
-                        casilla.setForeground(new Color(255, 0, 0));
+                        casilla.setForeground(Colores.DARK_MEGENTA);
                         casilla.setText("X");
                         Jugador1 = false;
-                        texto.setText("O turn");
+                        texto.setText("Turno de: O");
                         empate++;
                         comprobarVictoria();
                     }
                 } else {
                     if ("".equals(casilla.getText())) {
-                        casilla.setForeground(new Color(0, 0, 255));
+                        casilla.setForeground(Colores.STEEL_BLUE);
                         casilla.setText("O");
                         Jugador1 = true;
-                        texto.setText("X turn");
+                        texto.setText("Turno de: X");
                         empate++;
                         comprobarVictoria();
                     }
